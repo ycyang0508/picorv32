@@ -50,6 +50,9 @@ testbench.vvp: testbench.v picorv32.v
 	iverilog -o $@ $(subst C,-DCOMPRESSED_ISA,$(COMPRESSED_ISA)) $^
 	chmod -x $@
 
+testbench_irun : testbench.v picorv32.v
+	irun -64bit -faccess +rw -delay_trigger +define+COMPRESSED_ISA $^
+
 testbench_wb.vvp: testbench_wb.v picorv32.v
 	iverilog -o $@ $(subst C,-DCOMPRESSED_ISA,$(COMPRESSED_ISA)) $^
 	chmod -x $@
