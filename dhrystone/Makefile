@@ -13,6 +13,9 @@ endif
 test: testbench.vvp dhry.hex
 	vvp -N testbench.vvp
 
+test_irun : testbench.v ../picorv32.v dhry.hex
+	irun -64bit -faccess +rw -delay_trigger  testbench.v ../picorv32.v
+
 test_nola: testbench_nola.vvp dhry.hex
 	vvp -N testbench_nola.vvp
 
